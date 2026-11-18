@@ -1,0 +1,16 @@
+﻿@page "{cityName}"
+@model Tp_2_C_ASP.NET.Pages.CityManager.CityDetailsModel
+@{
+    ViewData["Title"] = "Detalhes da Cidade";
+}
+
+<h2>Detalhes da Cidade</h2>
+
+@if (!string.IsNullOrEmpty(Model.CityName))
+{
+    <p style="font-size: 18px;">Você está vendo detalhes de: <strong>@Model.CityName</strong></p>
+}
+else
+{
+    <p style="color: red;">Nenhuma cidade informada na URL.</p>
+}

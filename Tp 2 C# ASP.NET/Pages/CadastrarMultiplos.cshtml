@@ -1,0 +1,51 @@
+﻿@page
+@model Tp_2_C_ASP.NET.Pages.CityManager.CadastrarMultiplosModel
+@{
+    ViewData["Title"] = "Cadastro de multiplos paises";
+}
+
+<h2>Cadastro Simultâneo de Países</h2>
+
+<form method="post">
+    <table border="1" cellpadding="5" cellspacing="0" style="margin-bottom: 15px;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome do País</th>
+                <th>Código do País (ISO)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 5; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>
+                        <input type="text" name="Inputs[@i].CountryName" value="@Model.Inputs[i].CountryName" />
+                    </td>
+                    <td>
+                        <input type="text" name="Inputs[@i].CountryCode" value="@Model.Inputs[i].CountryCode" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit">Cadastrar Todos</button>
+</form>
+
+@if (Model.SubmittedCountries.Count > 0)
+{
+    <hr />
+    <h3 style="color: green;">Países cadastrados com sucesso:</h3>
+    <ul>
+        @foreach (var pais in Model.SubmittedCountries)
+        {
+            <li><strong>@pais.CountryName</strong> (Código: @pais.CountryCode)</li>
+        }
+    </ul>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

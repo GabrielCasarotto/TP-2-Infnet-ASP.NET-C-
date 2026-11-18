@@ -1,0 +1,36 @@
+﻿@page
+@model Tp_2_C_ASP.NET.Pages.CityManager.ListNotesModel
+@{
+    ViewData["Title"] = "Listar Notas Salvas";
+}
+
+<h2>Notas Salvas no Servidor</h2>
+
+@if (Model.Notes.Count == 0)
+{
+    <p>Nenhuma nota encontrada na pasta <code>wwwroot/files</code>.</p>
+}
+else
+{
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Nome do Arquivo</th>
+                <th>Conteúdo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model.Notes)
+            {
+                <tr>
+                    <td><strong>@note.FileName</strong></td>
+                    <td>@note.Content</td>
+                    <td>
+                        <a href="/files/@note.FileName" download>Baixar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

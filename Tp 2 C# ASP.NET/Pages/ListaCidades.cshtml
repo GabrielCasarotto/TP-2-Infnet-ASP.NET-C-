@@ -1,0 +1,17 @@
+﻿@page
+@model Tp_2_C_ASP.NET.Pages.CityManager.ListaCidadesModel
+@{
+    ViewData["Title"] = "Lista de Cidades";
+}
+
+<h2>Lista de Cidades</h2>
+<p>Selecione uma cidade para ver os detalhes:</p>
+
+<ul>
+    @foreach (var city in Model.Cities)
+    {
+        <li>
+            <a asp-page="CityDetails" asp-route-cityName="@city">@city</a>
+        </li>
+    }
+</ul>

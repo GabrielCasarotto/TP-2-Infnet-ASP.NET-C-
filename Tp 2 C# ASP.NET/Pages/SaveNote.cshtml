@@ -1,0 +1,29 @@
+﻿@page
+@model Tp_2_C_ASP.NET.Pages.CityManager.SaveNoteModel
+@{
+    ViewData["Title"] = "Salvar Nota";
+}
+
+<h2>Criar e Salvar Nota em Arquivo</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Input.Content">Conteúdo da Nota:</label><br />
+        <textarea asp-for="Input.Content" rows="5" cols="40" placeholder="Digite seu texto aqui..."></textarea>
+        <span asp-validation-for="Input.Content" style="color: red; display: block;"></span>
+    </div>
+
+    <button type="submit" style="margin-top: 10px;">Salvar em Arquivo</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.DownloadUrl))
+{
+    <div style="margin-top: 20px; color: green;">
+        <p>@Model.SuccessMessage</p>
+        <a href="@Model.DownloadUrl" download>Baixar Arquivo .txt</a>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
